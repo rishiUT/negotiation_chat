@@ -1,0 +1,11 @@
+#@package _global_
+mephisto:
+  task:
+    task_name: negotiation-chat
+    task_title: "Negotiate the price of an item - earn up to $2!"
+    task_description: |
+      The goal of this task is to negotiate the price of an item listed on Craigslist
+      with the aim to maximize your own gain while also reaching an agreement with the 
+      other side.
+    task_reward: 0.1
+    task_tags: "dialog,chat,negotiation"
