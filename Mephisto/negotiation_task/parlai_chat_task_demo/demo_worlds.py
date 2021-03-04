@@ -39,7 +39,7 @@ class MultiAgentDialogWorld(CrowdTaskWorld):
         self.agents = agents
         self.acts = [None] * len(agents)
         self.episodeDone = False
-        self.max_turns = opt.get("max_turns", 2)
+        self.max_turns = opt.get("max_turns", 20)
         self.current_turns = 0
         self.send_task_data = opt.get("send_task_data", False)
         self.opt = opt
@@ -135,6 +135,15 @@ class MultiAgentDialogWorld(CrowdTaskWorld):
             delayed(shutdown_agent)(agent) for agent in self.agents
         )
 
+    def get_instruction(self, agent_id=None, tag='first'):
+        # assign roles based on which Turker connects first and second via agent_id
+        if tag == 'identity':
+            if (agent_id == 'Chat Agent 1'):
+                agent_text = "You are randomly assigned to be the <span style=\"font-size: 20px;\"><b><i>BUYER</i></b></span> in this negotiation task.<br><br>As the buyer, your job is to persuade the seller (your co-worker) to sell the item shown above at the <span style=\"text-decoration: underline;\"> target price of <b>{$target_price}</b> </span> . As you can see, this target price is lower than the listing price of the item.<br><br> If you succeed in persuading your co-worker to sell the item at the target price, you will receive a bonus payment. You are not allowed to tell your co-worker the target price given to you or collude with them.</b></u></li></ul><br><br>You can refer to this link to see an example of a conversation where a buyer and a seller are negotiating on the price of a television set. <br><br><a href=\"https://www.savethechildren.org/\" target=\"_blank\">https://www.savethechildren.org/</a>"
+                return persona_text
+            else:
+                persona_text = "You are randomly assigned to be the <span style=\"font-size: 20px;\"><b><i>SELLER</i></b></span> in this negotiation task.<br><br>As the seller, your job is to persuade the buyer (your co-worker) to purchase the item shown above at the <span style=\"text-decoration: underline;\"> listing price of <b>{$listing_price}</b> </span> .<br><br> If you succeed in persuading your co-worker to purchase the item at the listing price, you will receive a bonus payment. </b></u></li></ul><br><br>You can refer to this link to see an example of a conversation where a buyer and a seller are negotiating on the price of a television set. <br><br><a href=\"https://www.savethechildren.org/\" target=\"_blank\">https://www.savethechildren.org/</a>"
+                return persona_text
 
 def make_onboarding_world(opt, agent):
     return MultiAgentDialogOnboardWorld(opt, agent)

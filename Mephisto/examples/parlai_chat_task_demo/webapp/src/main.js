@@ -8,11 +8,11 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-//import "bootstrap-chat/styles.css";
-import "../../../packages/bootstrap-chat/styles.css";
+import "bootstrap-chat/styles.css";
+//import "../../../packages/bootstrap-chat/styles.css";
 
-//import { ChatApp, ChatMessage, DefaultTaskDescription } from "bootstrap-chat";
-import { ChatApp, ChatMessage, DefaultTaskDescription } from "../../../packages/bootstrap-chat";
+import { ChatApp, ChatMessage, DefaultTaskDescription } from "bootstrap-chat";
+//import { ChatApp, ChatMessage, DefaultTaskDescription } from "../../../packages/bootstrap-chat";
 
 function RenderChatMessage({ message, mephistoContext, appContext, idx }) {
   const { agentId } = mephistoContext;

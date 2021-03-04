@@ -171,7 +171,7 @@ function MainApp() {
       renderSidePane={({ mephistoContext: { taskConfig } }) => (
         <DefaultTaskDescription
           chatTitle={taskConfig.chat_title}
-          taskDescriptionHtml={taskConfig.task_description}
+          taskDescriptionHtml={taskConfig.task_description2}
         >
           <h2>This is a custom Task Description loaded from a custom bundle</h2>
           <p>
