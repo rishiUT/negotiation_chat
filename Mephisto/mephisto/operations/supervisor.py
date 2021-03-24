@@ -438,6 +438,7 @@ class Supervisor:
                 self.db, worker, unit, crowd_data
             )
             logger.debug(f"Created agent {agent}, {agent.db_id}.")
+            #logger.debug(f"Created agent {agent.get_agent_id()}, {worker.worker_name}.")
             self.message_queue.append(
                 Packet(
                     packet_type=PACKET_TYPE_PROVIDER_DETAILS,

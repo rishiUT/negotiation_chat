@@ -70,7 +70,7 @@ export default function BlueprintSelectComponent<T>({
       {selected && (
         <BlueprintParamsAsync
           info={paramsInfo}
-          onLoading={() => <span>Loading...</span>}
+          onLoading={() => <span>Hi</span>}
           onError={() => <span>Error</span>}
           onData={({ data }) => (
             <OptionsForm

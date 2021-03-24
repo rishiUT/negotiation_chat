@@ -45,7 +45,7 @@ function App() {
       ) : null}
       {error && <h5 className="error">Error: {JSON.stringify(error)}</h5>}
       {isLoading ? (
-        <h1>Loading...</h1>
+        <h1>Hi10</h1>
       ) : isFinished ? (
         <h1>Done reviewing! You can close this app now</h1>
       ) : (

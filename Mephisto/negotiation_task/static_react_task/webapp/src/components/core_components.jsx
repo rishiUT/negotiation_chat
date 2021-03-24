@@ -27,7 +27,7 @@ function OnboardingComponent({ onSubmit }) {
 }
 
 function LoadingScreen() {
-  return <Directions>Loading...</Directions>;
+  return <Directions>Hi22</Directions>;
 }
 
 function Directions({ children }) {

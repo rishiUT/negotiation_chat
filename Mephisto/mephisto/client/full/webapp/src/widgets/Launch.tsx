@@ -162,7 +162,7 @@ function LaunchForm() {
             </p>
             <LaunchInfoAsync
               info={launchInfo}
-              onLoading={() => <span>Loading...</span>}
+              onLoading={() => <span>Hi2</span>}
               onData={({ data }) => (
                 <div>
                   <BlueprintSelect
@@ -180,7 +180,7 @@ function LaunchForm() {
             </p>
             <LaunchInfoAsync
               info={launchInfo}
-              onLoading={() => <span>Loading...</span>}
+              onLoading={() => <span>Hi3</span>}
               onData={({ data }) => (
                 <div>
                   <ArchitectSelect
@@ -199,7 +199,7 @@ function LaunchForm() {
             </p>
             <RequesterInfoAsync
               info={requesterInfo}
-              onLoading={() => <span>Loading...</span>}
+              onLoading={() => <span>Hi4</span>}
               onData={({ data }) => (
                 <div>
                   <RequesterSelect
@@ -215,7 +215,7 @@ function LaunchForm() {
             <h2>Step 4. Final Task Options</h2>
             <DefaultTaskInfoAsync
               info={defaultTaskInfo}
-              onLoading={() => <span>Loading...</span>}
+              onLoading={() => <span>Hi5</span>}
               onData={({ data }) => (
                 <div>
                   <OptionsForm

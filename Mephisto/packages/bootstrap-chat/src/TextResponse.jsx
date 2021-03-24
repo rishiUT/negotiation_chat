@@ -52,7 +52,7 @@ function TextResponse({ onMessageSend, active }) {
             inputRef.current = ref;
           }}
           value={textValue}
-          placeholder="Please enter here..."
+          placeholder="Here, please enter the final price you negotiated with your co-worker..."
           onKeyPress={(e) => handleKeyPress(e)}
           onChange={(e) => setTextValue(e.target.value)}
           disabled={!active || sending}

@@ -86,7 +86,7 @@ function MainApp() {
     );
   }
   if (initialTaskData === null) {
-    return <div>Loading...</div>;
+    return <div>Hi12</div>;
   }
   return (
     <SubmitFrame onSubmit={submitFromFrame}>

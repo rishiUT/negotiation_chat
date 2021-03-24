@@ -35,7 +35,7 @@ function BaseFrontend({
 
   const { connectionStatus, agentStatus, taskConfig } = mephistoContext;
   const { appSettings } = appContext;
-  const sidePaneSize = appSettings.isCoverPage ? "col-xs-12" : "col-xs-4";
+  const sidePaneSize = appSettings.isCoverPage ? "col-md-12" : "col-md-4";
 
   return (
     <ConnectionStatusBoundary status={connectionStatus}>
@@ -44,6 +44,9 @@ function BaseFrontend({
           {renderSidePane({ mephistoContext, appContext })}
         </div>
         <div className="chat-container-pane">
+          <div className="item-details-pane">
+            <p> Here's a description and the listing price of the product on Craigslist:</p>
+          </div>
           <div className="right-top-pane">
             <ChatStatusBar />
             <ChatPane scrollBottomKey={messages.length + "-" + inputMode}>
@@ -82,7 +85,7 @@ function BaseFrontend({
 
 function getWaitingMessage(agentStatus) {
   return agentStatus === "waiting"
-    ? "Waiting to pair with a task..."
+    ? "Waiting to pair..."
     : "Waiting for the next person to speak...";
 }
 

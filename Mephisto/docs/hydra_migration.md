@@ -65,10 +65,12 @@ ARG_STRING = (
     f"--requester-name {requester_name} "
     f'--task-title "\\"{task_title}\\"" '
     f'--task-description "\\"{task_description}\\"" '
+    f'--side-description "\\"{side_description}\\"" '
     "--task-reward 0.3 "
     "--task-tags dynamic,chat,testing "
     f'--world-file "{TASK_DIRECTORY}/demo_worlds.py" '
     f'--task-description-file "{TASK_DIRECTORY}/task_description.html" '
+    f'--preview_source "{TASK_DIRECTORY}/initial_task_description.html" '
     "--num-conversations 1 "
 )
 
@@ -431,6 +433,7 @@ if __name__ == "__main__":
 mephisto:
   blueprint:
     world_file: ${task_dir}/demo_worlds.py
+    preview_source: ${task_dir}/initial_task_description.html
     task_description_file: ${task_dir}/task_description.html
     num_conversations: 1
 ```

@@ -53,7 +53,7 @@ function GridRenderer() {
     <main className="grid-renderer">
       {error && <h5 className="error">Error: {JSON.stringify(error)}</h5>}
       {isLoading ? (
-        <H1>Loading...</H1>
+        <H1>Hi9</H1>
       ) : isFinished ? (
         <H1>Done reviewing! You can close this app now</H1>
       ) : (

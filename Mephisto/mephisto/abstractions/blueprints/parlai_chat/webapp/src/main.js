@@ -45,9 +45,53 @@ function MainApp() {
       )}
       renderSidePane={({ mephistoContext: { taskConfig } }) => (
         <DefaultTaskDescription
-          chatTitle={taskConfig.chat_title}
-          taskDescriptionHtml={taskConfig.task_description}
-        />
+          chatTitle="Detailed Instructions"
+          taskDescriptionHtml="When you are finished, please press the Done button."
+        >
+          <html>
+            <p> Here's a description and the listing price of the product on Craigslist:</p>
+            <br />
+            <head>
+            <script>var loaded = false;</script>
+              <script src="http://code.jquery.com/jquery-latest.js"></script>
+              <script src="data.json"></script>
+              <script src="items.js" onLoad="alert('Script loaded!');
+              loaded=true;"></script>
+              <script>$(document).ready(randomItem);</script>
+            </head>
+            <body>
+              <div id = "display" ></div> 
+              <input type = "button" onclick="randomItem()" value = "Item details" />
+            </body>
+            <br />
+            <ul>
+            <li>You and the other worker will take turns to speak the dialogue corresponding to your role.</li>
+            <li>Please press the <b>Record</b> button only if it is your turn to speak. Then, speak in a persuasive manner with the goal of convincing the other worker and reaching an agreement.</li>
+            <li>As soon as you finish speaking, please press the <b>Pause</b> button to let the other worker speak.</li>
+            <li>When the other worker and you reach an agreement on the sale of an item, please press the <b>Stop</b> button to end the recording.</li>
+            </ul>
+            <br />
+            <p><b>Buyers:</b>
+              <br/>
+              <p>Please enter one of the following statements in the chat box at the bottom of the page and press <b>Send</b>:
+                <ul>
+                <li>If you have decided to <b>purchase</b> the item: <b>"I accept the purchase of the listed item at [OFFER PRICE].”</b></li>
+                <li>If you have decided to <b>not purchase</b> the item: <b>"I do not accept the purchase of the listed item at [OFFER PRICE]. Thank you for your time.”</b></li>   
+                </ul>
+              </p>
+            </p>
+            <br />
+            <p><b>Sellers:</b>
+            <br />
+            <p>Please enter one of the following statements in the chat box at the bottom of the page and press <b>Send</b>:
+              <ul>
+              <li>If you have decided to <b>sell</b> the item: <b>"I accept the sale of the listed item at [OFFER PRICE].”</b></li>
+              <li>If you have decided to <b>not sell</b> the item: <b>"I do not accept the sale of the listed item at [OFFER PRICE]. Thank you for your time.”</b></li>   
+              </ul>
+            </p>
+          </p>
+        </html>
+        </DefaultTaskDescription>
       )}
     />
   );

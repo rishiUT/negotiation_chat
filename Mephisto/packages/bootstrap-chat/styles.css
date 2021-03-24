@@ -19,6 +19,7 @@
 }
 
 .chat-container-pane {
+  background-color: #fed8b1;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -38,7 +39,7 @@
 
 .preview-screen,
 .side-pane {
-  background-color: #dff0d8;
+  background-color: #fed8b1;
   height: 100%;
   padding: 30px;
   overflow: auto;
@@ -47,6 +48,10 @@
 .right-bottom-pane {
   width: 100%;
   background-color: #eee;
+}
+
+.tab {
+  text-indent: 40px;
 }
 
 .connection-indicator {

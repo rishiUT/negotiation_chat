@@ -82,7 +82,7 @@ class ParlAIChatBlueprintArgs(BlueprintArgs):
     )
     preview_source: str = field(
         default=MISSING,
-        metadata={"help": "Optional path to source HTML file to preview the task"},
+        metadata={"help": "Path to source HTML file to preview the task"},
     )
     task_description_file: str = field(
         default=MISSING,
@@ -160,6 +160,11 @@ class ParlAIChatBlueprint(Blueprint, OnboardingRequired):
                     for i, col in enumerate(row):
                         row_data[headers[i]] = col
                     self._initialization_data_dicts.append(row_data)
+        # elif blue_args.get("data_json", None) is not None:
+        #     json_file = os.path.expanduser(blue_args.data_json)
+        #     assert os.path.exists(
+        #         json_file
+        #     ), f"Provided JSON file {json_file} doesn't exist"
         elif args.blueprint.get("context_jsonl", None) is not None:
             jsonl_file = os.path.expanduser(args.blueprint.context_jsonl)
             with open(jsonl_file, "r", encoding="utf-8-sig") as jsonl_fp:

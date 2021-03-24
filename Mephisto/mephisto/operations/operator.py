@@ -436,6 +436,7 @@ class Operator:
         """Print details about running tasks"""
         # TODO(#93) parse these tasks and get the full details
         for task in self.get_running_task_runs():
+            #pass
             logger.info(f"Operator running task ID = {task}")
 
     def wait_for_runs_then_shutdown(

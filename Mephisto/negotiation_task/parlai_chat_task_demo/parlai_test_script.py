@@ -25,7 +25,7 @@ defaults = [
     {"mephisto/architect": "local"},
     {"mephisto/provider": "mock"},
     "conf/base",
-    {"conf": "example"},
+    {"conf": "task_config.yaml"},
 ]
 
 from mephisto.operations.hydra_config import RunScriptConfig, register_script_config

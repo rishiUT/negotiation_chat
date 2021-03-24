@@ -49,7 +49,7 @@ function RequesterForm({
       {selectedProvider && (
         <ProviderParamsAsync
           info={requesterTypesAsync}
-          onLoading={() => <span>Loading...</span>}
+          onLoading={() => <span>Hi7</span>}
           onError={() => <span>Error</span>}
           onData={({ data: [details] }) => (
             <div style={{ margin: "30px 0 20px" }}>
@@ -135,7 +135,7 @@ function RequesterFormWithData({ onFinish }: { onFinish: Function }) {
   return (
     <LaunchOptionsAsync
       info={allRequestersAsync}
-      onLoading={() => <span>Loading...</span>}
+      onLoading={() => <span>Hi8</span>}
       onError={() => <span>Error</span>}
       onData={({ data }) => <RequesterForm onFinish={onFinish} data={data} />}
     />

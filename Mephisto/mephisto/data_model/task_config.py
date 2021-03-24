@@ -46,6 +46,13 @@ class TaskConfigArgs:
             "required": True,
         },
     )
+    # side_description: str = field(
+    #     default=MISSING,
+    #     metadata={
+    #         "help": "Longer form description for left side description.",
+    #         "required": True,
+    #     },
+    # )
     task_reward: float = field(
         default=MISSING,
         metadata={
@@ -102,6 +109,7 @@ class TaskConfig:
         self.args: Dict[str, Any] = args.task
         self.task_title: str = self.args["task_title"]
         self.task_description: str = self.args["task_description"]
+        # self.side_description: str = self.args["side_description"]
         self.task_reward: float = self.args["task_reward"]
         self.task_tags: List[str] = [
             s.strip() for s in self.args["task_tags"].split(",")

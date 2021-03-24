@@ -58,7 +58,7 @@ export default function ArchitectSelect({
       {selected && (
         <ArchitectParamsAsync
           info={paramsInfo}
-          onLoading={() => <span>Loading...</span>}
+          onLoading={() => <span>Hi6</span>}
           onError={() => <span>Error</span>}
           onData={({ data }) => (
             <OptionsForm
