@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-parlaichattaskdemo-dev-225051-authRole",
+      "UnauthRoleArn": "arn:aws:iam::246510241201:role/amplify-parlaichattaskdemo-dev-225051-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::246510241201:role/amplify-parlaichattaskdemo-dev-225051-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-parlaichattaskdemo-dev-225051-deployment",
+      "UnauthRoleName": "amplify-parlaichattaskdemo-dev-225051-unauthRole",
+      "StackName": "amplify-parlaichattaskdemo-dev-225051",
+      "StackId": "arn:aws:cloudformation:us-east-1:246510241201:stack/amplify-parlaichattaskdemo-dev-225051/6a17a030-b39e-11eb-a226-12d2fa0db74d",
+      "AmplifyAppId": "d3pujdz149j23o"
+    },
+    "categories": {
+      "auth": {
+        "parlaichattaskdemo90addf37": {}
+      }
+    }
+  }
+}

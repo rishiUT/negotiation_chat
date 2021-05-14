@@ -6,10 +6,11 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useEffect } from "react";
+import ReactDOM, { render } from "react-dom";
 import "bootstrap-chat/styles.css";
 //import "../../../packages/bootstrap-chat/styles.css";
+import { Storage } from 'aws-amplify'
 
 import { ChatApp, ChatMessage, DefaultTaskDescription } from "bootstrap-chat";
 //import { ChatApp, ChatMessage, DefaultTaskDescription } from "../../../packages/bootstrap-chat";
@@ -36,6 +37,16 @@ function RenderChatMessage({ message, mephistoContext, appContext, idx }) {
 }
 
 function MainApp() {
+  const [fileUrl, setFileUrl] = useState('');
+  useEffect(() => {
+    Storage.get('data.json')
+      .then(data => {
+        setFileUrl('data')
+      })
+      .catch(err => {
+        console.log('error fetching file')
+      })
+  }); 
   return (
     <ChatApp
       renderMessage={({ message, idx, mephistoContext, appContext }) => (
@@ -50,7 +61,7 @@ function MainApp() {
       renderSidePane={({ mephistoContext: { taskConfig } }) => (
         <DefaultTaskDescription
           chatTitle="Detailed Instructions"
-          taskDescriptionHtml="When you are finished, please press the Done button."
+          taskDescriptionHtml="When you are finished, please press the button."
         >
           <html>
             <p> Here's a description and the listing price of the product on Craigslist:</p>
@@ -58,7 +69,7 @@ function MainApp() {
             <head>
             <script>var loaded = false;</script>
               <script src="http://code.jquery.com/jquery-latest.js"></script>
-              <script src="data.json"></script>
+              <script type="text/javascript" src="data.json"></script>
               <script src="items.js" onLoad="alert('Script loaded!');
               loaded=true;"></script>
               <script>$(document).ready(randomItem);</script>

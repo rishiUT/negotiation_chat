@@ -118,6 +118,10 @@ class ParlAIChatBlueprintArgs(BlueprintArgs):
         default=MISSING,
         metadata={"help": "Optional path to jsonl file containing task context"},
     )
+    data_json: str = field(
+        default=MISSING,
+        metadata={"help": "Optional path to json file containing item details"},
+    )
     num_conversations: int = field(
         default=MISSING,
         metadata={
@@ -160,11 +164,6 @@ class ParlAIChatBlueprint(Blueprint, OnboardingRequired):
                     for i, col in enumerate(row):
                         row_data[headers[i]] = col
                     self._initialization_data_dicts.append(row_data)
-        # elif blue_args.get("data_json", None) is not None:
-        #     json_file = os.path.expanduser(blue_args.data_json)
-        #     assert os.path.exists(
-        #         json_file
-        #     ), f"Provided JSON file {json_file} doesn't exist"
         elif args.blueprint.get("context_jsonl", None) is not None:
             jsonl_file = os.path.expanduser(args.blueprint.context_jsonl)
             with open(jsonl_file, "r", encoding="utf-8-sig") as jsonl_fp:
@@ -248,6 +247,11 @@ class ParlAIChatBlueprint(Blueprint, OnboardingRequired):
             assert os.path.exists(
                 jsonl_file
             ), f"Target context_jsonl path {jsonl_file} doesn't exist"
+        elif args.blueprint.get("data_json", None) is not None:
+            json_file = os.path.expanduser(args.blueprint.data_json)
+            assert os.path.exists(
+                json_file
+            ), f"Provided JSON file {json_file} doesn't exist"
         elif args.blueprint.get("num_conversations", None) is not None:
             assert (
                 args.blueprint.num_conversations > 0

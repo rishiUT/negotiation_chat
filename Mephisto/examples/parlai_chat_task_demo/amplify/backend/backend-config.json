@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "parlaichattaskdemo90addf37": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "s3f608a327": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}
