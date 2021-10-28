@@ -1,11 +1,13 @@
 #@package _global_
 mephisto:
   blueprint:
+    world_file: ${task_dir}/my_demo_worlds.py
     custom_source_bundle: ${task_dir}/webapp/build/bundle.js
     extra_source_dir: ${task_dir}/data_files
-    data_json: ${task_dir}/data_files/data.json
+    #data_json: ${task_dir}/webapp/src/data.json
+    context_jsonl: ${task_dir}/webapp/src/context.jsonl
   task:
-    task_name: parlai-chat-example
+    task_name: parlai-chat-example-2
     task_title: "Test ParlAI Prebuilt Chat Task"
     task_description: >
       This is a simple chat between two people

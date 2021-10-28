@@ -9,11 +9,13 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM, { render } from "react-dom";
 import "bootstrap-chat/styles.css";
-//import "../../../packages/bootstrap-chat/styles.css";
 import { Storage } from 'aws-amplify'
 
 import { ChatApp, ChatMessage, DefaultTaskDescription } from "bootstrap-chat";
-//import { ChatApp, ChatMessage, DefaultTaskDescription } from "../../../packages/bootstrap-chat";
+
+import Message from './message.js'
+
+import { useMephistoLiveTask, useMephistoTask } from "mephisto-task";
 
 function RenderChatMessage({ message, mephistoContext, appContext, idx }) {
   const { agentId } = mephistoContext;
@@ -37,6 +39,7 @@ function RenderChatMessage({ message, mephistoContext, appContext, idx }) {
 }
 
 function MainApp() {
+  //Find data.json
   const [fileUrl, setFileUrl] = useState('');
   useEffect(() => {
     Storage.get('data.json')
@@ -46,7 +49,75 @@ function MainApp() {
       .catch(err => {
         console.log('error fetching file')
       })
-  }); 
+  });
+
+  const {
+    taskConfig,
+    agentId,
+    assignmentId,
+
+    initialTaskData,
+    handleSubmit,
+    isLoading,
+    isOnboarding,
+    isPreview,
+    previewHtml,
+    blockedReason,
+
+    // advanced usage:
+    providerWorkerId,
+    mephistoWorkerId,
+
+    // This hook includes ALL of the props
+    // specified above with useMephistoTask,
+    // while also including the following:
+    connect,
+    destroy,
+    sendMessage,
+
+    agentState,
+    agentStatus,
+
+    connectionStatus,
+  } = useMephistoLiveTask(
+    function onConnectionStatusChange(connectionStatus){
+
+    },
+    function onStateUpdate({ state, status }){
+        // called when either agentState or agentStatus updates
+    },
+    function onMessageReceived(message){
+
+    }
+  );
+/*
+const {
+  taskConfig,
+  agentId,
+  assignmentId,
+
+  initialTaskData,
+  handleSubmit,
+  isLoading,
+  isOnboarding,
+  isPreview,
+  previewHtml,
+  blockedReason,
+
+  // advanced usage:
+  providerWorkerId,
+  mephistoWorkerId,
+
+} = useMephistoTask();
+*/
+
+  //Setup the item description message
+  const [idMessageisOpen, setidMessageIsOpen] = useState(false);
+ 
+  const toggleidMessage = () => {
+    setidMessageIsOpen(!idMessageisOpen);
+  }
+
   return (
     <ChatApp
       renderMessage={({ message, idx, mephistoContext, appContext }) => (
@@ -68,15 +139,22 @@ function MainApp() {
             <br />
             <head>
             <script>var loaded = false;</script>
-              <script src="http://code.jquery.com/jquery-latest.js"></script>
-              <script type="text/javascript" src="data.json"></script>
-              <script src="items.js" onLoad="alert('Script loaded!');
-              loaded=true;"></script>
-              <script>$(document).ready(randomItem);</script>
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script type="text/javascript" src="data.json"></script>
+            <script src="items.js" onLoad="alert('Script loaded!'); loaded=true;"></script>
+
+            <script>$(document).ready(randomItem);</script>
             </head>
             <body>
               <div id = "display" ></div> 
-              <input type = "button" onclick="randomItem()" value = "Item details" />
+              <input type = "button" onClick={toggleidMessage} value = "Item details" />
+              {idMessageisOpen && <Message
+                content={<>
+                  <b>{assignmentId + " " + agentId + " "  + JSON.stringify(initialTaskData) + "\n" + JSON.stringify(initialTaskData["task_data"]) + JSON.stringify(initialTaskData.task_data)}</b>
+                  <p>example</p>
+                </>}
+                handleClose={toggleidMessage}
+              />}
             </body>
             <br />
             <ul>
