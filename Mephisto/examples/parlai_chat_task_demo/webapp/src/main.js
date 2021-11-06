@@ -149,7 +149,7 @@ const {
           key={message.message_id + "-" + idx}
         />
       )}
-      renderSidePane={({ mephistoContext: { taskConfig } }) => (
+        renderSidePane={({ mephistoContext: { taskConfig }, appContext }) => (
         <DefaultTaskDescription
           chatTitle="Detailed Instructions"
           taskDescriptionHtml="When you are finished, please press the button."
@@ -158,12 +158,6 @@ const {
             <p> Here's a description and the listing price of the product on Craigslist:</p>
             <br />
             <head>
-            <script>var loaded = false;</script>
-            <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <script type="text/javascript" src="data.json"></script>
-            <script src="items.js" onLoad="alert('Script loaded!'); loaded=true;"></script>
-
-            <script>$(document).ready(randomItem);</script>
             </head>
             <body>
               <div id = "display" ></div>
@@ -173,7 +167,11 @@ const {
                 content={<>
                   <h3>{initialTaskData.task_data.title}</h3>
                   <p>{initialTaskData.task_data.description}</p>
-                  <p>{"price = $" + initialTaskData.task_data.price}</p>
+                  {appContext.taskContext.role && <p>{"price = $" + (initialTaskData.task_data.price * (appContext.taskContext.role === "Seller" ? 1.05 : 0.95))}</p>}
+                  <image src="https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-test-icon-63758263.jpg"></image>
+                  <p>{"context is " + JSON.stringify(appContext.taskContext)}</p>
+                  <p>{"dialogue_state is " + appContext.taskContext.dialogue_state}</p>
+                  <p>{"role is " + appContext.taskContext.role}</p>
                 </>}
                 handleClose={toggleidMessage}
               />}

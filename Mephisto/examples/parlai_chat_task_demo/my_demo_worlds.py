@@ -64,7 +64,8 @@ class MultiAgentDialogWorld(CrowdTaskWorld):
                         "id": "Coordinator",
                         "text": agent.agent_id,
                         "task_data": {
-                            "command": "start_call" 
+                            "dialogue_state": "start_call",
+                            "role": agent.agent_id
                         }
                     }
                 )

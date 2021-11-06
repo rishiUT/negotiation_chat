@@ -45,7 +45,6 @@ function BaseFrontend({
         </div>
         <div className="chat-container-pane">
           <div className="item-details-pane">
-            <p> Here's a description and the listing price of the product on Craigslist:</p>
           </div>
           <div className="right-top-pane">
             <ChatStatusBar />
