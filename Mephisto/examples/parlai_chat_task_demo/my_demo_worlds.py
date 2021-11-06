@@ -43,6 +43,7 @@ class MultiAgentDialogWorld(CrowdTaskWorld):
         self.current_turns = 0
         self.send_task_data = opt.get("send_task_data", False)
         self.opt = opt
+        self.firstMessage = True
         for idx, agent in enumerate(self.agents):
             if idx == 0:
                 agent.agent_id = f"Seller"
@@ -55,6 +56,20 @@ class MultiAgentDialogWorld(CrowdTaskWorld):
         took.
         Then take an action yourself.
         """
+
+        if self.firstMessage == True:
+            for agent in self.agents:
+                agent.observe(
+                    {
+                        "id": "Coordinator",
+                        "text": agent.agent_id,
+                        "task_data": {
+                            "command": "start_call" 
+                        }
+                    }
+                )
+            self.firstMessage = False
+
         acts = self.acts
         self.current_turns += 1
         for index, agent in enumerate(self.agents):

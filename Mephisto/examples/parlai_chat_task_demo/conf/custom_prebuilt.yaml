@@ -7,7 +7,7 @@ mephisto:
     #data_json: ${task_dir}/webapp/src/data.json
     context_jsonl: ${task_dir}/webapp/src/context.jsonl
   task:
-    task_name: parlai-chat-example-2
+    task_name: parlai-chat-example-6
     task_title: "Test ParlAI Prebuilt Chat Task"
     task_description: >
       This is a simple chat between two people

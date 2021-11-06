@@ -17,10 +17,18 @@ import Message from './message.js'
 
 import { useMephistoLiveTask, useMephistoTask } from "mephisto-task";
 
+var callStartable = false;
+var myID = "Default";
+
 function RenderChatMessage({ message, mephistoContext, appContext, idx }) {
   const { agentId } = mephistoContext;
   const { currentAgentNames } = appContext.taskContext;
-
+/*
+  if (/* message != null && message.task_data != null && *//* message.task_data.command === "start_call") {
+    callStartable = true;
+    myID = message.text;
+  }
+*/
   return (
     <div onClick={() => alert("You clicked on message with index " + idx)}>
       <ChatMessage
@@ -111,9 +119,21 @@ const {
 } = useMephistoTask();
 */
 
+/*
+              <Message
+                content={<>
+                  <h1>{initialTaskData.task_data.title}</h1>
+                  <p>{initialTaskData.task_data.description}</p>
+                  <p>price: {initialTaskData.task_data.price}</p>
+                </>}
+                handleClose={toggleidMessage}
+              />*/
+
   //Setup the item description message
   const [idMessageisOpen, setidMessageIsOpen] = useState(false);
+  //const [content, setContent] = useState(assignmentId + " " + agentId + " " + JSON.stringify(initialTaskData["task_data"]) + JSON.stringify(initialTaskData.task_data))
  
+  //var content = assignmentId + " " + agentId + " " + JSON.stringify(initialTaskData["task_data"]) + JSON.stringify(initialTaskData.task_data);
   const toggleidMessage = () => {
     setidMessageIsOpen(!idMessageisOpen);
   }
@@ -146,12 +166,14 @@ const {
             <script>$(document).ready(randomItem);</script>
             </head>
             <body>
-              <div id = "display" ></div> 
+              <div id = "display" ></div>
               <input type = "button" onClick={toggleidMessage} value = "Item details" />
+              <input type = "button" onclick={/*setContent(myID + " " + JSON.stringify(initialTaskData["task_data"]))*/toggleidMessage} value = "refresh" />
               {idMessageisOpen && <Message
                 content={<>
-                  <b>{assignmentId + " " + agentId + " "  + JSON.stringify(initialTaskData) + "\n" + JSON.stringify(initialTaskData["task_data"]) + JSON.stringify(initialTaskData.task_data)}</b>
-                  <p>example</p>
+                  <h3>{initialTaskData.task_data.title}</h3>
+                  <p>{initialTaskData.task_data.description}</p>
+                  <p>{"price = $" + initialTaskData.task_data.price}</p>
                 </>}
                 handleClose={toggleidMessage}
               />}
