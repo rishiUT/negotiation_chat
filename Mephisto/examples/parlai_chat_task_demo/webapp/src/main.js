@@ -162,19 +162,21 @@ const {
             <body>
               <div id = "display" ></div>
               <input type = "button" onClick={toggleidMessage} value = "Item details" />
-              <input type = "button" onclick={/*setContent(myID + " " + JSON.stringify(initialTaskData["task_data"]))*/toggleidMessage} value = "refresh" />
               {idMessageisOpen && <Message
                 content={<>
                   <h3>{initialTaskData.task_data.title}</h3>
                   <p>{initialTaskData.task_data.description}</p>
-                  {appContext.taskContext.role && <p>{"price = $" + (initialTaskData.task_data.price * (appContext.taskContext.role === "Seller" ? 1.05 : 0.95))}</p>}
-                  <image src="https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-test-icon-63758263.jpg"></image>
+                  {appContext.taskContext.role && <p>{"Your goal price is $" + (initialTaskData.task_data.price * (appContext.taskContext.role === "Seller" ? 1.05 : 0.95))}</p>}
+                  {appContext.taskContext.role && <p>{"The listing price is $" + (initialTaskData.task_data.price * 1.05)}</p>}
+                  <img src={initialTaskData.task_data.images[0] ? initialTaskData.task_data.images[0] : "https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-test-icon-63758263.jpg"} alt="Item Picture" width="50%"></img>
                   <p>{"context is " + JSON.stringify(appContext.taskContext)}</p>
                   <p>{"dialogue_state is " + appContext.taskContext.dialogue_state}</p>
                   <p>{"role is " + appContext.taskContext.role}</p>
+                  <p>{"The image URL is " + initialTaskData.task_data.images[0]}</p>
                 </>}
                 handleClose={toggleidMessage}
               />}
+              {appContext.taskContext.dialogue_state === "start_call" && <input type = "button" onClick={console.log("Start the Call!")} value = "Start Call" />}
             </body>
             <br />
             <ul>
@@ -184,6 +186,7 @@ const {
             <li>When the other worker and you reach an agreement on the sale of an item, please press the <b>Stop</b> button to end the recording.</li>
             </ul>
             <br />
+            {appContext.taskContext.role === "Buyer" &&
             <p><b>Buyers:</b>
               <br/>
               <p>Please enter one of the following statements in the chat box at the bottom of the page and press <b>Send</b>:
@@ -193,16 +196,18 @@ const {
                 </ul>
               </p>
             </p>
-            <br />
+            }
+            {appContext.taskContext.role === "Seller" &&
             <p><b>Sellers:</b>
-            <br />
-            <p>Please enter one of the following statements in the chat box at the bottom of the page and press <b>Send</b>:
-              <ul>
-              <li>If you have decided to <b>sell</b> the item: <b>"I accept the sale of the listed item at [OFFER PRICE].”</b></li>
-              <li>If you have decided to <b>not sell</b> the item: <b>"I do not accept the sale of the listed item at [OFFER PRICE]. Thank you for your time.”</b></li>   
-              </ul>
+              <br />
+              <p>Please enter one of the following statements in the chat box at the bottom of the page and press <b>Send</b>:
+                <ul>
+                <li>If you have decided to <b>sell</b> the item: <b>"I accept the sale of the listed item at [OFFER PRICE].”</b></li>
+                <li>If you have decided to <b>not sell</b> the item: <b>"I do not accept the sale of the listed item at [OFFER PRICE]. Thank you for your time.”</b></li>   
+                </ul>
+              </p>
             </p>
-          </p>
+            }
           </html>
         </DefaultTaskDescription>
       )}
