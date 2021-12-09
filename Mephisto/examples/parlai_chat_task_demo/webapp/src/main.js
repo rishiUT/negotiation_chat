@@ -164,15 +164,15 @@ const {
               <input type = "button" onClick={toggleidMessage} value = "Item details" />
               {idMessageisOpen && <Message
                 content={<>
-                  <h3>{initialTaskData.task_data.title}</h3>
-                  <p>{initialTaskData.task_data.description}</p>
-                  {appContext.taskContext.role && <p>{"Your goal price is $" + (initialTaskData.task_data.price * (appContext.taskContext.role === "Seller" ? 1.05 : 0.95))}</p>}
-                  {appContext.taskContext.role && <p>{"The listing price is $" + (initialTaskData.task_data.price * 1.05)}</p>}
-                  <img src={initialTaskData.task_data.images[0] ? initialTaskData.task_data.images[0] : "https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-test-icon-63758263.jpg"} alt="Item Picture" width="50%"></img>
+                  <h3>{initialTaskData.task_data.Title}</h3>
+                  <p>{initialTaskData.task_data.Description}</p>
+                  {appContext.taskContext.role && <p>{"Your goal price is $" + (initialTaskData.task_data.Price * (appContext.taskContext.role === "Seller" ? 1.05 : 0.95))}</p>}
+                  {appContext.taskContext.role && <p>{"The listing price is $" + (initialTaskData.task_data.Price * 1.05)}</p>}
+                  <img src={initialTaskData.task_data.Images[0] ? "https://negchat-images.s3.us-east-2.amazonaws.com/images/" + initialTaskData.task_data.Images[0] : "https://blog.udemy.com/wp-content/uploads/2014/05/bigstock-test-icon-63758263.jpg"} alt="Item Picture" width="50%"></img>
                   <p>{"context is " + JSON.stringify(appContext.taskContext)}</p>
                   <p>{"dialogue_state is " + appContext.taskContext.dialogue_state}</p>
                   <p>{"role is " + appContext.taskContext.role}</p>
-                  <p>{"The image URL is " + initialTaskData.task_data.images[0]}</p>
+                  <p>{"The image URL is " + "https://negchat-images.s3.us-east-2.amazonaws.com/images/" + initialTaskData.task_data.Images[0]}</p>
                 </>}
                 handleClose={toggleidMessage}
               />}
